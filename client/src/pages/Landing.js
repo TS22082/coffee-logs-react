@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Col, Row, Card, Nav } from "react-bootstrap";
+import Login from "../components/Login";
+import Register from "../components/Register";
 
 const Landing = () => {
   const styles = {
@@ -14,7 +16,7 @@ const Landing = () => {
 
   return (
     <Row xs={12}>
-      <Col xs={{ span: 8, offset: 2 }}>
+      <Col xs={12} md={{ span: 8, offset: 2 }}>
         <Card style={styles.card}>
           <Card.Body>
             <Nav
@@ -31,7 +33,7 @@ const Landing = () => {
             </Nav>
           </Card.Body>
           <Card.Body>
-            {landing === "login" ? <h1>login</h1> : <h1>register</h1>}
+            {landing === "login" ? <Login /> : <Register />}
           </Card.Body>
         </Card>
       </Col>
