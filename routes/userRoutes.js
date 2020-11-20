@@ -3,6 +3,7 @@ const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const auth = require("../middleware/auth");
+const auth = require("../middleware/auth");
 
 // register an account
 router.post("/register", async (req, res) => {
