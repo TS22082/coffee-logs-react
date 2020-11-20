@@ -32,4 +32,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+app.use("/users", require("./routes/userRoutes"));
+
 app.listen(PORT, () => console.log(`Listening at: http://localhost:${PORT}`));
