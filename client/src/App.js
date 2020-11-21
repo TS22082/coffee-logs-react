@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import UserContext from "./Context/UserContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/Home";
+import Edit from "./pages/Edit";
 import Landing from "./pages/Landing";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import axios from "axios";
+import Navigation from "./components/Navigation";
 
 function App() {
   const [userData, setUserData] = useState({
@@ -55,22 +57,13 @@ function App() {
     <div className="App">
       <BrowserRouter>
         {/* Navigation */}
-        <Navbar bg="dark" variant="dark" expand="lg">
-          <Navbar.Brand href="#home">Coffee Logs</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ml-auto">
-              {userData.user ? (
-                <Nav.Link onClick={logout}>Sign Out</Nav.Link>
-              ) : null}
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
+        <Navigation userData={userData} logout={logout} />
         {/* Main Content */}
         <Container>
           <UserContext.Provider value={{ userData, setUserData }}>
             <Switch>
               <Route path="/home" component={Home} />
+              <Route path="/edit/:id" component={Edit} />
               <Route path="/" component={Landing} />
             </Switch>
           </UserContext.Provider>

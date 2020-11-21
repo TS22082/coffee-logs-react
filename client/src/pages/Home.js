@@ -35,7 +35,7 @@ const Home = () => {
       }
     })();
 
-    return () => source.cancel("Operation cancelled");
+    return () => source.cancel();
   }, [source]);
 
   const deleteLog = async (id) => {
@@ -54,8 +54,8 @@ const Home = () => {
       <GroupAdd />
       <Row>
         {logs.length
-          ? logs.map((log) => (
-              <Col xs={12} md={6}>
+          ? logs.map((log, index) => (
+              <Col xs={12} md={6} key={index}>
                 <Card className="mt-4">
                   <Card.Body>
                     <div className="text-right">
@@ -66,7 +66,13 @@ const Home = () => {
                         ></Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                          <Dropdown.Item>Edit</Dropdown.Item>
+                          <Dropdown.Item
+                            onClick={() => {
+                              history.push(`/edit/${log._id}`);
+                            }}
+                          >
+                            Edit
+                          </Dropdown.Item>
                           <Dropdown.Item
                             onClick={() => {
                               deleteLog(log._id);
