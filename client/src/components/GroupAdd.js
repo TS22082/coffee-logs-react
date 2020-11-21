@@ -1,32 +1,41 @@
 import React, { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
+import axios from "axios";
 
 const GroupAdd = () => {
   const [show, setShow] = useState(false);
   const [log, setLog] = useState("");
 
   const onChange = (e) => {
-    setLog({ ...log, [e.target.name]: e.target.value });
+    setLog({ [e.target.name]: e.target.value });
   };
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const toggleModal = () => setShow(show === false ? true : false);
 
   const styles = {
     marginTop: "20px",
   };
 
-  const submit = () => {};
+  const submit = async () => {
+    try {
+      const logRes = await axios.post("/logs", log, {
+        headers: { "x-auth-token": localStorage.getItem("auth-token") },
+      });
+      console.log(logRes);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div style={styles}>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" onClick={toggleModal}>
         Add Log
       </Button>
 
       <hr />
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={toggleModal}>
         <Modal.Header closeButton>
           <Modal.Title>Add Coffee Log</Modal.Title>
         </Modal.Header>
@@ -34,7 +43,7 @@ const GroupAdd = () => {
           <Form.Group>
             <Form.Label>Supports Markdown</Form.Label>
             <Form.Control
-              name="log"
+              name="text"
               onChange={onChange}
               as="textarea"
               rows={3}
@@ -42,7 +51,13 @@ const GroupAdd = () => {
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
+          <Button
+            variant="primary"
+            onClick={() => {
+              submit();
+              toggleModal();
+            }}
+          >
             Save Log
           </Button>
         </Modal.Footer>
