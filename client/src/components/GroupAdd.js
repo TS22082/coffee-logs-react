@@ -3,7 +3,7 @@ import { Button, Modal, Form } from "react-bootstrap";
 
 const GroupAdd = () => {
   const [show, setShow] = useState(false);
-  const [log, setLog] = useState();
+  const [log, setLog] = useState("");
 
   const onChange = (e) => {
     setLog({ ...log, [e.target.name]: e.target.value });
