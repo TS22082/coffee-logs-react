@@ -19,4 +19,12 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
+router.delete("/:logid", auth, async (req, res) => {
+  try {
+    res.json(await Log.findByIdAndDelete(req.params.logid));
+  } catch (err) {
+    res.send(err);
+  }
+});
+
 module.exports = router;

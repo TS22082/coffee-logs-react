@@ -38,33 +38,51 @@ const Home = () => {
     return () => source.cancel("Operation cancelled");
   }, [source]);
 
+  const deleteLog = async (id) => {
+    try {
+      const deleteRes = await axios.delete(`/logs/${id}`, {
+        headers: { "x-auth-token": localStorage.getItem("auth-token") },
+      });
+      console.log(deleteRes);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div>
       <GroupAdd />
-
       <Row>
-        {logs.map((log) => (
-          <Col xs={12} md={4}>
-            <Card>
-              <Card.Body>
-                <div className="text-right">
-                  <Dropdown>
-                    <Dropdown.Toggle
-                      variant="secondary-outline"
-                      id="dropdown-basic"
-                    ></Dropdown.Toggle>
+        {logs.length
+          ? logs.map((log) => (
+              <Col xs={12} md={6}>
+                <Card>
+                  <Card.Body>
+                    <div className="text-right">
+                      <Dropdown>
+                        <Dropdown.Toggle
+                          variant="secondary-outline"
+                          id="dropdown-basic"
+                        ></Dropdown.Toggle>
 
-                    <Dropdown.Menu>
-                      <Dropdown.Item>Edit</Dropdown.Item>
-                      <Dropdown.Item>Delete</Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
-                </div>
-                <ReactMarkdown>{log.text}</ReactMarkdown>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
+                        <Dropdown.Menu>
+                          <Dropdown.Item>Edit</Dropdown.Item>
+                          <Dropdown.Item
+                            onClick={() => {
+                              deleteLog(log._id);
+                            }}
+                          >
+                            Delete
+                          </Dropdown.Item>
+                        </Dropdown.Menu>
+                      </Dropdown>
+                    </div>
+                    <ReactMarkdown>{log.text}</ReactMarkdown>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))
+          : null}
       </Row>
     </div>
   );
