@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
+import GroupAdd from "../components/GroupAdd";
 import UserContext from "../Context/UserContext";
 
 const Home = () => {
@@ -12,7 +13,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Home</h1>
+      <GroupAdd />
     </div>
   );
 };
