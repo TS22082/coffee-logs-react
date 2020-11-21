@@ -1,15 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Form, Button } from "react-bootstrap";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+import UserContext from "../Context/UserContext";
 
 const Login = () => {
   const [login, setLogin] = useState({});
+  const { setUserData } = useContext(UserContext);
+  const history = useHistory();
 
   const onChange = (e) => {
     setLogin({ ...login, [e.target.name]: e.target.value });
   };
 
+  const submit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const loginRes = await axios.post("/users/login", {
+        email: login.email,
+        password: login.password,
+      });
+
+      setUserData({
+        token: loginRes.data.token,
+        user: loginRes.data.user,
+      });
+
+      localStorage.setItem("auth-token", loginRes.data.token);
+      history.push("/");
+    } catch (err) {
+      console.log("problem");
+    }
+  };
+
   return (
-    <Form>
+    <Form onSubmit={submit}>
       <Form.Group>
         <Form.Label>Email address</Form.Label>
         <Form.Control
