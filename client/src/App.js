@@ -60,8 +60,9 @@ function App() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
+              {userData.user ? (
+                <Nav.Link onClick={logout}>Sign Out</Nav.Link>
+              ) : null}
             </Nav>
           </Navbar.Collapse>
         </Navbar>

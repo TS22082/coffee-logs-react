@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
+import UserContext from "../Context/UserContext";
+import axios from "axios";
 
 const Register = () => {
   const [register, setRegister] = useState({});
@@ -11,7 +13,8 @@ const Register = () => {
     setRegister({ ...register, [e.target.name]: e.target.value });
   };
 
-  const submit = async () => {
+  const submit = async (e) => {
+    e.preventDefault();
     try {
       await axios.post("/users/register", register);
       const loginRes = await axios.post("/users/login", {
@@ -31,7 +34,7 @@ const Register = () => {
     }
   };
   return (
-    <Form>
+    <Form onSubmit={submit}>
       <Form.Group>
         <Form.Label>Email address</Form.Label>
         <Form.Control
