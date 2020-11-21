@@ -1,11 +1,34 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 
 const Register = () => {
   const [register, setRegister] = useState({});
+  const { setUserData } = useContext(UserContext);
+  const history = useHistory();
 
   const onChange = (e) => {
     setRegister({ ...register, [e.target.name]: e.target.value });
+  };
+
+  const submit = async () => {
+    try {
+      await axios.post("/users/register", register);
+      const loginRes = await axios.post("/users/login", {
+        email: register.email,
+        password: register.password,
+      });
+
+      setUserData({
+        token: loginRes.data.token,
+        user: loginRes.data.user,
+      });
+
+      localStorage.setItem("auth-token", loginRes.data.token);
+      history.push("/home");
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <Form>
@@ -20,9 +43,9 @@ const Register = () => {
       </Form.Group>
 
       <Form.Group>
-        <Form.Label>Username</Form.Label>
+        <Form.Label>Display Name</Form.Label>
         <Form.Control
-          name="userName"
+          name="displayName"
           onChange={onChange}
           type="text"
           placeholder="Enter username"
