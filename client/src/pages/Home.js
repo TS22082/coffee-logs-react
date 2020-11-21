@@ -56,7 +56,7 @@ const Home = () => {
         {logs.length
           ? logs.map((log) => (
               <Col xs={12} md={6}>
-                <Card>
+                <Card className="mt-4">
                   <Card.Body>
                     <div className="text-right">
                       <Dropdown>
