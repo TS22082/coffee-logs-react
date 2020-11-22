@@ -19,6 +19,14 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
+router.get("/find/:id", auth, async (req, res) => {
+  try {
+    res.json(await Log.find({ _id: req.params.id }));
+  } catch (err) {
+    res.send(err);
+  }
+});
+
 router.delete("/:logid", auth, async (req, res) => {
   try {
     res.json(await Log.findByIdAndDelete(req.params.logid));
