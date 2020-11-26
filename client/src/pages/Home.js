@@ -59,8 +59,10 @@ const Home = () => {
                         <Dropdown.Toggle
                           variant="secondary-outline"
                           id="dropdown-basic"
-                        ></Dropdown.Toggle>
-                        <Dropdown.Menu>
+                        >
+                          Options
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu className="shadow-sm">
                           <Dropdown.Item
                             onClick={() => {
                               history.push(`/item/${log._id}`);

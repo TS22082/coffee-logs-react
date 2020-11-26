@@ -29,7 +29,7 @@ const GroupAdd = () => {
 
   return (
     <div style={styles}>
-      <Button variant="primary" onClick={toggleModal}>
+      <Button variant="primary" className="shadow-sm" onClick={toggleModal}>
         Add Log
       </Button>
 
@@ -52,13 +52,21 @@ const GroupAdd = () => {
         </Modal.Body>
         <Modal.Footer>
           <Button
+            variant="secondary"
+            onClick={() => {
+              toggleModal();
+            }}
+          >
+            Cancel
+          </Button>
+          <Button
             variant="primary"
             onClick={() => {
               submit();
               toggleModal();
             }}
           >
-            Save Log
+            Save
           </Button>
         </Modal.Footer>
       </Modal>

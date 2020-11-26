@@ -16,7 +16,7 @@ const Item = (props) => {
 
   const deleteLog = async (id) => {
     try {
-      const deleteRes = await axios.delete(`/logs/${id}`, {
+      await axios.delete(`/logs/${id}`, {
         headers: { "x-auth-token": localStorage.getItem("auth-token") },
       });
       history.push("/home");
@@ -64,9 +64,11 @@ const Item = (props) => {
                   <Dropdown.Toggle
                     variant="secondary-outline"
                     id="dropdown-basic"
-                  ></Dropdown.Toggle>
+                  >
+                    Options
+                  </Dropdown.Toggle>
 
-                  <Dropdown.Menu>
+                  <Dropdown.Menu className="shadow-sm">
                     <Dropdown.Item
                       onClick={() => {
                         setEditMode(true);
@@ -80,6 +82,13 @@ const Item = (props) => {
                       }}
                     >
                       Delete
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      onClick={() => {
+                        history.push("/home");
+                      }}
+                    >
+                      Home
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
@@ -106,12 +115,12 @@ const Item = (props) => {
                 <Button
                   onClick={() => setEditMode(false)}
                   variant="secondary"
-                  className="mr-2"
+                  className="mr-2 shadow-sm"
                 >
                   Cancel
                 </Button>
-                <Button onClick={submit} variant="primary">
-                  Save Log
+                <Button onClick={submit} variant="primary shadow-sm">
+                  Save
                 </Button>
               </div>
             </Form.Group>

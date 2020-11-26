@@ -18,8 +18,8 @@ const Landing = () => {
   return (
     <Auth>
       <Row xs={12}>
-        <Col xs={12} md={{ span: 8, offset: 2 }}>
-          <Card style={styles.card}>
+        <Col xs={12} md={{ span: 6, offset: 3 }}>
+          <Card style={styles.card} className="shadow">
             <Card.Body>
               <Nav
                 variant="tabs"

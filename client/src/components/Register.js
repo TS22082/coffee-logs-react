@@ -74,7 +74,7 @@ const Register = () => {
           placeholder="Password"
         />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button variant="primary" className="shadow-sm" type="submit">
         Submit
       </Button>
     </Form>
