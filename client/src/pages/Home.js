@@ -5,6 +5,7 @@ import GroupAdd from "../components/GroupAdd";
 import UserContext from "../Context/UserContext";
 import axios from "axios";
 import { Col, Row, Card, Dropdown } from "react-bootstrap";
+import "./home.css";
 
 const Home = () => {
   const { userData } = useContext(UserContext);
@@ -34,20 +35,15 @@ const Home = () => {
           : console.log(err);
       }
     })();
-
     return () => source.cancel();
   }, [source]);
 
-  const deleteLog = async (id) => {
-    try {
-      const deleteRes = await axios.delete(`/logs/${id}`, {
-        headers: { "x-auth-token": localStorage.getItem("auth-token") },
-      });
-      console.log(deleteRes);
-    } catch (err) {
-      console.log(err);
-    }
+  const cardStyles = {
+    height: "250px",
+    overflow: "hidden",
   };
+
+  const truncate = (str) => str.split("").splice(0, 40).join("") + " ...";
 
   return (
     <div>
@@ -56,7 +52,7 @@ const Home = () => {
         {logs.length
           ? logs.map((log, index) => (
               <Col xs={12} md={6} key={index}>
-                <Card className="mt-4">
+                <Card className="mt-4" style={cardStyles}>
                   <Card.Body>
                     <div className="text-right">
                       <Dropdown>
@@ -68,22 +64,17 @@ const Home = () => {
                         <Dropdown.Menu>
                           <Dropdown.Item
                             onClick={() => {
-                              history.push(`/edit/${log._id}`);
+                              history.push(`/item/${log._id}`);
                             }}
                           >
-                            Edit
-                          </Dropdown.Item>
-                          <Dropdown.Item
-                            onClick={() => {
-                              deleteLog(log._id);
-                            }}
-                          >
-                            Delete
+                            View
                           </Dropdown.Item>
                         </Dropdown.Menu>
                       </Dropdown>
                     </div>
-                    <ReactMarkdown>{log.text}</ReactMarkdown>
+                    <ReactMarkdown className="fadeText">
+                      {truncate(log.text)}
+                    </ReactMarkdown>
                   </Card.Body>
                 </Card>
               </Col>

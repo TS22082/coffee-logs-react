@@ -17,14 +17,23 @@ const Navigation = (props) => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
           {props.userData.user ? (
-            <Nav.Link
-              onClick={() => {
-                props.logout();
-                history.push("/");
-              }}
-            >
-              Sign Out
-            </Nav.Link>
+            <>
+              <Nav.Link
+                onClick={() => {
+                  history.push("/home");
+                }}
+              >
+                Home
+              </Nav.Link>
+              <Nav.Link
+                onClick={() => {
+                  props.logout();
+                  history.push("/");
+                }}
+              >
+                Sign Out
+              </Nav.Link>
+            </>
           ) : null}
         </Nav>
       </Navbar.Collapse>
