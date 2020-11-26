@@ -56,9 +56,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {/* Navigation */}
         <Navigation userData={userData} logout={logout} />
-        {/* Main Content */}
         <Container>
           <UserContext.Provider value={{ userData, setUserData }}>
             <Switch>
