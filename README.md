@@ -10,9 +10,9 @@ A web app to keep track of coffee roasts. Users can use markdown to create, edit
 <br>
 
 <p float="left">
-  <img src="./assets/auth.png" width="500"/>
-  <img src="./assets/preview.png"width="500"/>
-  <img src="./assets/markdown.png" width="500"/>
+  <img src="./assets/auth.png" width="50%"/>
+  <img src="./assets/preview.png" width="50%"/>
+  <img src="./assets/markdown.png" width="50%"/>
 </p>
 
 ### Motivation:
