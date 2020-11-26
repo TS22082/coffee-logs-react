@@ -57,7 +57,7 @@ const Item = (props) => {
     <Row className="mt-4">
       <Col md={{ span: 8, offset: 2 }}>
         {!editMode ? (
-          <Card className="mt-4">
+          <Card className="shadow p-3 mt-4">
             <Card.Body>
               <div className="text-right">
                 <Dropdown>

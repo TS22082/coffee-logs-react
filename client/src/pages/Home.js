@@ -52,7 +52,7 @@ const Home = () => {
         {logs.length
           ? logs.map((log, index) => (
               <Col xs={12} md={6} key={index}>
-                <Card className="mt-4" style={cardStyles}>
+                <Card className="shadow p-3 mt-4" style={cardStyles}>
                   <Card.Body>
                     <div className="text-right">
                       <Dropdown>
