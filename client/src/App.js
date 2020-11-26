@@ -4,7 +4,6 @@ import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import UserContext from "./Context/UserContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/Home";
-import Edit from "./pages/Edit";
 import Item from "./pages/Item";
 import Landing from "./pages/Landing";
 import { Navbar, Nav, Container } from "react-bootstrap";
@@ -64,7 +63,6 @@ function App() {
           <UserContext.Provider value={{ userData, setUserData }}>
             <Switch>
               <Route path="/home" component={Home} />
-              <Route path="/edit/:id" component={Edit} />
               <Route path="/item/:id" component={Item} />
               <Route path="/" component={Landing} />
             </Switch>
