@@ -60,7 +60,6 @@ const Home = () => {
                           variant="secondary-outline"
                           id="dropdown-basic"
                         ></Dropdown.Toggle>
-
                         <Dropdown.Menu>
                           <Dropdown.Item
                             onClick={() => {
