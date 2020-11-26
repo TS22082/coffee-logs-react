@@ -5,13 +5,13 @@
 
 ### Description:
 
-A web app to keep track of coffee roasts.
+A web app to keep track of coffee roasts. Users can use markdown to create, edit and delete coffee "logs" using markdown for text formatting.
 
 <br>
 
 ### Motivation:
 
-I needed a way to keep track of new coffee roasts I am trying out.
+I needed a way to keep track of new coffee roasts I am trying out. I wanted to be able to ue markdown to format entries.
 
 <br>
 
