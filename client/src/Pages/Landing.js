@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Col, Row, Card, Nav } from "react-bootstrap";
-import Auth from "../components/Auth";
-import Login from "../components/Login";
-import Register from "../components/Register";
+import Auth from "../Components/Auth";
+import Login from "../Components/Login";
+import Register from "../Components/Register";
 
 const Landing = () => {
   const styles = {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import ReactMarkdown from "react-markdown";
 import { useHistory } from "react-router-dom";
-import GroupAdd from "../components/GroupAdd";
+import GroupAdd from "../Components/GroupAdd";
 import UserContext from "../Context/UserContext";
 import axios from "axios";
 import { Col, Row, Card, Dropdown } from "react-bootstrap";

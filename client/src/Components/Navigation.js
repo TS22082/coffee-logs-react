@@ -5,11 +5,6 @@ import { Navbar, Nav } from "react-bootstrap";
 
 const Navigation = (props) => {
   const history = useHistory();
-  const [checked, setChecked] = useState(false);
-
-  const onChange = () => {
-    setChecked(!checked);
-  };
 
   return (
     <Navbar bg="dark" variant="dark" expand="lg">

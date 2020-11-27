@@ -3,12 +3,12 @@ import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import UserContext from "./Context/UserContext";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Home from "./pages/Home";
-import Item from "./pages/Item";
-import Landing from "./pages/Landing";
+import Home from "./Pages/Home";
+import Item from "./Pages/Item";
+import Landing from "./Pages/Landing";
 import { Container } from "react-bootstrap";
 import axios from "axios";
-import Navigation from "./components/Navigation";
+import Navigation from "./Components/Navigation";
 
 function App() {
   const [userData, setUserData] = useState({

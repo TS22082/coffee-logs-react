@@ -9,6 +9,10 @@ const Item = (props) => {
   const [editMode, setEditMode] = useState(false);
   const history = useHistory();
 
+  const btnStyles = {
+    width: "80px",
+  };
+
   const onChange = (e) => {
     e.preventDefault();
     setLog({ ...log, [e.target.name]: e.target.value });
@@ -114,12 +118,16 @@ const Item = (props) => {
               <div className="text-right">
                 <Button
                   onClick={() => setEditMode(false)}
-                  variant="secondary"
-                  className="mr-2 shadow-sm"
+                  variant="secondary mr-2 shadow-sm"
+                  style={btnStyles}
                 >
                   Cancel
                 </Button>
-                <Button onClick={submit} variant="primary shadow-sm">
+                <Button
+                  onClick={submit}
+                  variant="primary shadow -sm"
+                  style={btnStyles}
+                >
                   Save
                 </Button>
               </div>
