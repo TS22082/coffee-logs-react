@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { Navbar, Nav } from "react-bootstrap";
 
 const Navigation = (props) => {
   const history = useHistory();
+  const [checked, setChecked] = useState(false);
+
+  const onChange = () => {
+    setChecked(!checked);
+  };
 
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
