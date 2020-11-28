@@ -45,8 +45,6 @@ router.post("/register", async (req, res) => {
       token: crypto.randomBytes(16).toString("hex"),
     });
 
-    console.log(process.env.EPASS);
-
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -59,7 +57,9 @@ router.post("/register", async (req, res) => {
       from: "coffeelogzz2208@gmail.com",
       to: newUser.email,
       subject: "Confirm your account",
-      text: "confirm with this token: " + confirmToken.token,
+      text:
+        "Thanks for signing up! Confirm your account here: \n http://localhost:3000/confirm_account/" +
+        confirmToken.token,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {

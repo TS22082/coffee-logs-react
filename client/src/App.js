@@ -9,6 +9,7 @@ import Landing from "./Pages/Landing";
 import { Container } from "react-bootstrap";
 import axios from "axios";
 import Navigation from "./Components/Navigation";
+import ConfirmAccount from "./Pages/ConfirmAccount";
 
 function App() {
   const [userData, setUserData] = useState({
@@ -62,6 +63,10 @@ function App() {
             <Switch>
               <Route path="/home" component={Home} />
               <Route path="/item/:id" component={Item} />
+              <Route
+                path="/confirm_account/:token"
+                component={ConfirmAccount}
+              />
               <Route path="/" component={Landing} />
             </Switch>
           </UserContext.Provider>
