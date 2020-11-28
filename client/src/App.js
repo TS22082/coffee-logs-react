@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom";
 import UserContext from "./Context/UserContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./Pages/Home";
@@ -10,12 +10,16 @@ import { Container } from "react-bootstrap";
 import axios from "axios";
 import Navigation from "./Components/Navigation";
 import ConfirmAccount from "./Pages/ConfirmAccount";
+import Confirmation from "./Pages/Confirmation";
+import { useBootstrapPrefix } from "react-bootstrap/esm/ThemeProvider";
 
 function App() {
   const [userData, setUserData] = useState({
     user: undefined,
     token: undefined,
   });
+
+  const history = useHistory();
 
   const checkLoggedIn = async () => {
     let token = localStorage.getItem("auth-token");
@@ -34,10 +38,12 @@ function App() {
         headers: { "x-auth-token": token },
       });
 
-      setUserData({
-        token,
-        user: userRes.data,
-      });
+      !userRes.data.confirmed
+        ? console.log("user still needs to verify their account")
+        : setUserData({
+            token,
+            user: userRes.data,
+          });
     }
   };
 
@@ -63,6 +69,8 @@ function App() {
             <Switch>
               <Route path="/home" component={Home} />
               <Route path="/item/:id" component={Item} />
+
+              <Route path="/confirmation" component={Confirmation} />
               <Route
                 path="/confirm_account/:token"
                 component={ConfirmAccount}

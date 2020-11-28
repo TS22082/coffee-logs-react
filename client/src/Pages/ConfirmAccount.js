@@ -1,18 +1,21 @@
 import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
+
 import axios from "axios";
 
 const ConfirmAccount = (props) => {
+  const history = useHistory();
+
   useEffect(() => {
     (async () => {
-      console.log(props.match.params);
-
       try {
         const confirmationRequest = await axios.post("/confirm", {
           token: props.match.params.token,
         });
-
-        console.log(confirmationRequest);
-      } catch (err) {}
+        history.push("/");
+      } catch (err) {
+        console.log(err);
+      }
     })();
   }, []);
   return (

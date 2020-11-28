@@ -95,6 +95,11 @@ router.post("/login", async (req, res) => {
         .status(400)
         .json({ msg: "No account with this email has been registered." });
 
+    if (!user.confirmed)
+      return res
+        .status(401)
+        .json({ msg: "This account needs to be confirmed." });
+
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ msg: "Invalid credentials!" });
 
@@ -142,10 +147,16 @@ router.post("/tokenIsValid", async (req, res) => {
 
 router.get("/", auth, async (req, res) => {
   const user = await User.findById(req.user);
-  res.json({
-    displayName: user.displayName,
-    id: user._id,
-  });
+
+  if (!user.confirmed) {
+    res.json({ confirmed: user.confirmed });
+  } else {
+    res.json({
+      displayName: user.displayName,
+      id: user._id,
+      confirmed: user.confirmed,
+    });
+  }
 });
 
 module.exports = router;

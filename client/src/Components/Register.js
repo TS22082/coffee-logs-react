@@ -17,18 +17,7 @@ const Register = () => {
     e.preventDefault();
     try {
       await axios.post("/users/register", register);
-      const loginRes = await axios.post("/users/login", {
-        email: register.email,
-        password: register.password,
-      });
-
-      setUserData({
-        token: loginRes.data.token,
-        user: loginRes.data.user,
-      });
-
-      localStorage.setItem("auth-token", loginRes.data.token);
-      history.push("/home");
+      history.push("/confirmation");
     } catch (err) {
       console.log(err);
     }
