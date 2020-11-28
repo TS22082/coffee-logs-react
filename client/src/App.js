@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom";
 import UserContext from "./Context/UserContext";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "react-toastify/dist/ReactToastify.css";
 import Home from "./Pages/Home";
 import Item from "./Pages/Item";
 import Landing from "./Pages/Landing";
@@ -12,6 +13,7 @@ import Navigation from "./Components/Navigation";
 import ConfirmAccount from "./Pages/ConfirmAccount";
 import Confirmation from "./Pages/Confirmation";
 import { useBootstrapPrefix } from "react-bootstrap/esm/ThemeProvider";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const [userData, setUserData] = useState({
@@ -38,12 +40,10 @@ function App() {
         headers: { "x-auth-token": token },
       });
 
-      !userRes.data.confirmed
-        ? console.log("user still needs to verify their account")
-        : setUserData({
-            token,
-            user: userRes.data,
-          });
+      setUserData({
+        token,
+        user: userRes.data,
+      });
     }
   };
 
@@ -63,6 +63,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <ToastContainer />
         <Navigation userData={userData} logout={logout} />
         <Container>
           <UserContext.Provider value={{ userData, setUserData }}>

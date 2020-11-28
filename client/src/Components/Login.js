@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import UserContext from "../Context/UserContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [login, setLogin] = useState({});
@@ -22,15 +23,17 @@ const Login = () => {
         password: login.password,
       });
 
-      setUserData({
-        token: loginRes.data.token,
-        user: loginRes.data.user,
-      });
+      !loginRes.data.confirmed
+        ? toast("You still need to confirm your account")
+        : setUserData({
+            token: loginRes.data.token,
+            user: loginRes.data.user,
+          });
 
       localStorage.setItem("auth-token", loginRes.data.token);
       history.push("/");
     } catch (err) {
-      console.log("problem");
+      console.log(err);
     }
   };
 
