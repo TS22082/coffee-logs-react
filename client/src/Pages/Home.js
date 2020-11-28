@@ -5,6 +5,7 @@ import GroupAdd from "../Components/GroupAdd";
 import UserContext from "../Context/UserContext";
 import axios from "axios";
 import { Col, Row, Card, Dropdown } from "react-bootstrap";
+import { ImCancelCircle } from "react-icons/im";
 import "./home.css";
 
 const Home = () => {
@@ -45,9 +46,15 @@ const Home = () => {
 
   const truncate = (str) => str.split("").splice(0, 40).join("") + " ...";
 
+  const iconStyle = {
+    width: "100px",
+    height: "100px",
+  };
+
   return (
     <div>
       <GroupAdd />
+
       <Row>
         {logs.length
           ? logs.map((log, index) => (

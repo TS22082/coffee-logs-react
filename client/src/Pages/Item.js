@@ -80,6 +80,7 @@ const Item = (props) => {
                     >
                       Edit
                     </Dropdown.Item>
+
                     <Dropdown.Item
                       onClick={() => {
                         deleteLog(log._id);
@@ -125,7 +126,7 @@ const Item = (props) => {
                 </Button>
                 <Button
                   onClick={submit}
-                  variant="primary shadow -sm"
+                  variant="primary shadow-sm"
                   style={btnStyles}
                 >
                   Save
