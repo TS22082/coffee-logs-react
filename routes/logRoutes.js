@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const auth = require("../middleware/auth");
-const { findByIdAndUpdate } = require("../models/logModel");
 const Log = require("../models/logModel");
 
 router.post("/", auth, async (req, res) => {

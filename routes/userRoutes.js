@@ -1,8 +1,11 @@
 const router = require("express").Router();
 const User = require("../models/userModel");
+const Confirm = require("../models/confirmModel");
+var crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const auth = require("../middleware/auth");
+const nodemailer = require("nodemailer");
 
 // register an account
 router.post("/register", async (req, res) => {
@@ -37,6 +40,37 @@ router.post("/register", async (req, res) => {
       displayName,
     });
 
+    const confirmToken = new Confirm({
+      authorId: newUser._id,
+      token: crypto.randomBytes(16).toString("hex"),
+    });
+
+    console.log(process.env.EPASS);
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "coffeelogzz2208@gmail.com",
+        pass: process.env.EPASS,
+      },
+    });
+
+    const mailOptions = {
+      from: "coffeelogzz2208@gmail.com",
+      to: newUser.email,
+      subject: "Confirm your account",
+      text: "confirm with this token: " + confirmToken.token,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email sent: " + info.response);
+      }
+    });
+
+    await confirmToken.save();
     const savedUser = await newUser.save();
 
     res.json(savedUser);
