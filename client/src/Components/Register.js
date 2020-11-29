@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const [register, setRegister] = useState({});
@@ -17,7 +18,7 @@ const Register = () => {
       await axios.post("/users/register", register);
       history.push("/confirmation");
     } catch (err) {
-      console.log(err);
+      toast.error(err.response.data.msg);
     }
   };
   return (

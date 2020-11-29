@@ -96,7 +96,8 @@ router.post("/login", async (req, res) => {
         .json({ msg: "No account with this email has been registered." });
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ msg: "Invalid credentials!" });
+    if (!isMatch)
+      return res.status(400).json({ msg: "The password is incorrect!" });
 
     if (!user.confirmed)
       return res.json({ token: null, user: { confirmed: user.confirmed } });

@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import UserContext from "../Context/UserContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [login, setLogin] = useState({});
@@ -31,11 +32,10 @@ const Login = () => {
         });
 
         localStorage.setItem("auth-token", loginRes.data.token);
-        console.log("it happened?");
         history.push("/");
       }
     } catch (err) {
-      console.log(err);
+      toast.error(err.response.data.msg);
     }
   };
 
