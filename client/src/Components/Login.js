@@ -22,14 +22,16 @@ const Login = () => {
         password: login.password,
       });
 
-      if (!loginRes.data.confirmed) {
+      if (!loginRes.data.user.confirmed) {
         history.push("/confirmation");
       } else {
         setUserData({
           token: loginRes.data.token,
           user: loginRes.data.user,
         });
+
         localStorage.setItem("auth-token", loginRes.data.token);
+        console.log("it happened?");
         history.push("/");
       }
     } catch (err) {

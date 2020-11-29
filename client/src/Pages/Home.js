@@ -54,7 +54,6 @@ const Home = () => {
   return (
     <div>
       <GroupAdd />
-
       <Row>
         {logs.length
           ? logs.map((log, index) => (
