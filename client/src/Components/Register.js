@@ -1,12 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
-import UserContext from "../Context/UserContext";
 import axios from "axios";
 
 const Register = () => {
   const [register, setRegister] = useState({});
-  const { setUserData } = useContext(UserContext);
   const history = useHistory();
 
   const onChange = (e) => {
