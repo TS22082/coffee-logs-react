@@ -60,9 +60,15 @@ const Login = () => {
           placeholder="Password"
         />
       </Form.Group>
-      <Button variant="primary" className="shadow-sm" type="submit">
-        Submit
-      </Button>
+      <div className="text-right">
+        <Button
+          variant="primary shadow-sm"
+          disabled={login.email && login.password ? false : true}
+          type="submit"
+        >
+          Submit
+        </Button>
+      </div>
     </Form>
   );
 };

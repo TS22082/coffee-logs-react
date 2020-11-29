@@ -5,7 +5,13 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const Register = () => {
-  const [register, setRegister] = useState({});
+  const [register, setRegister] = useState({
+    email: "",
+    password: "",
+    passwordCheck: "",
+    password: "",
+    displayName: "",
+  });
   const history = useHistory();
 
   const onChange = (e) => {
@@ -62,9 +68,22 @@ const Register = () => {
           placeholder="Password"
         />
       </Form.Group>
-      <Button variant="primary" className="shadow-sm" type="submit">
-        Submit
-      </Button>
+      <div className="text-right">
+        <Button
+          variant="primary shadow-sm"
+          disabled={
+            register.email &&
+            register.password &&
+            register.passwordCheck &&
+            register.displayName
+              ? false
+              : true
+          }
+          type="submit"
+        >
+          Submit
+        </Button>
+      </div>
     </Form>
   );
 };
