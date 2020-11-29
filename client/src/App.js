@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import UserContext from "./Context/UserContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,8 +20,6 @@ function App() {
     user: undefined,
     token: undefined,
   });
-
-  const history = useHistory();
 
   const checkLoggedIn = async () => {
     let token = localStorage.getItem("auth-token");

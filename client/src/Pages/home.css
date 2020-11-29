@@ -1,9 +1,0 @@
-.ellipsis {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.fadeText {
-  background-image: linear-gradient(to bottom, transparent, white);
-}

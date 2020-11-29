@@ -5,8 +5,6 @@ import GroupAdd from "../Components/GroupAdd";
 import UserContext from "../Context/UserContext";
 import axios from "axios";
 import { Col, Row, Card, Dropdown } from "react-bootstrap";
-import { ImCancelCircle } from "react-icons/im";
-import "./home.css";
 
 const Home = () => {
   const { userData } = useContext(UserContext);
@@ -46,11 +44,6 @@ const Home = () => {
 
   const truncate = (str) => str.split("").splice(0, 40).join("") + " ...";
 
-  const iconStyle = {
-    width: "100px",
-    height: "100px",
-  };
-
   return (
     <div>
       <GroupAdd />
@@ -79,9 +72,7 @@ const Home = () => {
                         </Dropdown.Menu>
                       </Dropdown>
                     </div>
-                    <ReactMarkdown className="fadeText">
-                      {truncate(log.text)}
-                    </ReactMarkdown>
+                    <ReactMarkdown>{truncate(log.text)}</ReactMarkdown>
                   </Card.Body>
                 </Card>
               </Col>

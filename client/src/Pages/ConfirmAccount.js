@@ -9,7 +9,7 @@ const ConfirmAccount = (props) => {
   useEffect(() => {
     (async () => {
       try {
-        const confirmationRequest = await axios.post("/confirm", {
+        await axios.post("/confirm", {
           token: props.match.params.token,
         });
         toast("The account has been confirmed! \n Log in to use your account");
@@ -18,7 +18,7 @@ const ConfirmAccount = (props) => {
         console.log(err);
       }
     })();
-  }, []);
+  }, [history, props.match.params.token]);
   return (
     <div>
       <h1>Congrats you've confirmed your account</h1>
