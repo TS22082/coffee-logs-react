@@ -23,15 +23,16 @@ const Login = () => {
         password: login.password,
       });
 
-      !loginRes.data.confirmed
-        ? toast("You still need to confirm your account")
-        : setUserData({
-            token: loginRes.data.token,
-            user: loginRes.data.user,
-          });
-
-      localStorage.setItem("auth-token", loginRes.data.token);
-      history.push("/");
+      if (!loginRes.data.confirmed) {
+        history.push("/confirmation");
+      } else {
+        setUserData({
+          token: loginRes.data.token,
+          user: loginRes.data.user,
+        });
+        localStorage.setItem("auth-token", loginRes.data.token);
+        history.push("/");
+      }
     } catch (err) {
       console.log(err);
     }

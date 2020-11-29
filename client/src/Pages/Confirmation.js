@@ -11,9 +11,11 @@ const Confirmation = () => {
           </Card.Header>
           <Card.Body>
             <p>
-              You were sent an email from us to confirm the account. You will
-              not be able to log in until you confirm.
+              You should have been sent an email from us to confirm the account.
+              You will not be able to log in until you confirm.
             </p>
+            <br />
+            <p>Do you need us to resend the confirmation link?</p>
           </Card.Body>
         </Card>
       </Col>
