@@ -89,7 +89,9 @@ const Login = () => {
           <small class="form-text text-muted">
             Needs to be greater than 7 characters long.
           </small>
-        ) : null}
+        ) : (
+          <small class="form-text text-muted">Checks out!</small>
+        )}
       </Form.Group>
       <div className="text-right">
         <Button

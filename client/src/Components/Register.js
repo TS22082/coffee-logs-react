@@ -92,7 +92,7 @@ const Register = () => {
           placeholder="Enter username"
         />
         {!register.displayName.length > 0 ? (
-          <small class="form-text text-muted">Cannot be empty.</small>
+          <small class="form-text text-muted">Can not be empty.</small>
         ) : (
           <small class="form-text text-muted">Checks out!</small>
         )}
