@@ -67,13 +67,11 @@ const Register = () => {
           placeholder="Enter email"
         />
         {!validEmail(register.email) ? (
-          <small id="emailHelp" class="form-text text-muted">
+          <Form.Text className="text-muted">
             Needs to be a valid email.
-          </small>
+          </Form.Text>
         ) : (
-          <small id="emailHelp" class="form-text text-muted">
-            Checks out!
-          </small>
+          <Form.Text className="text-muted">Checks out!</Form.Text>
         )}
       </Form.Group>
 
@@ -91,9 +89,9 @@ const Register = () => {
           placeholder="Enter username"
         />
         {!register.displayName.length > 0 ? (
-          <small class="form-text text-muted">Can not be empty.</small>
+          <Form.Text className="text-muted">Can not be empty.</Form.Text>
         ) : (
-          <small class="form-text text-muted">Checks out!</small>
+          <Form.Text className="text-muted">Checks out!</Form.Text>
         )}
       </Form.Group>
 
@@ -111,11 +109,11 @@ const Register = () => {
           placeholder="Password"
         />
         {!validPassword(register.password) ? (
-          <Form.Text class="text-muted">
+          <Form.Text className="text-muted">
             Needs to be greater than 7 characters long.
           </Form.Text>
         ) : (
-          <small class="form-text text-muted">Checks out!</small>
+          <Form.Text className="text-muted">Checks out!</Form.Text>
         )}
       </Form.Group>
 
@@ -129,9 +127,9 @@ const Register = () => {
           placeholder="Password"
         />
         {!validateCheck() ? (
-          <Form.Text class="text-muted">Passwords must match.</Form.Text>
+          <Form.Text className="text-muted">Passwords must match.</Form.Text>
         ) : (
-          <Form.Text class="text-muted">Checks out!</Form.Text>
+          <Form.Text className="text-muted">Checks out!</Form.Text>
         )}
       </Form.Group>
       <div className="text-right">
