@@ -13,21 +13,23 @@ const Navigation = (props) => {
           Coffee Logs
         </Link>
       </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="ml-auto">
-          {props.userData.user ? (
-            <Nav.Link
-              onClick={() => {
-                props.logout();
-                history.push("/");
-              }}
-            >
-              Sign Out
-            </Nav.Link>
-          ) : null}
-        </Nav>
-      </Navbar.Collapse>
+      {props.userData.user ? (
+        <>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ml-auto">
+              <Nav.Link
+                onClick={() => {
+                  props.logout();
+                  history.push("/");
+                }}
+              >
+                Sign Out
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </>
+      ) : null}
     </Navbar>
   );
 };
