@@ -3,7 +3,6 @@ import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import UserContext from "../Context/UserContext";
-import { toast } from "react-toastify";
 
 const Login = () => {
   const [login, setLogin] = useState({});

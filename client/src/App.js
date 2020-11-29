@@ -13,7 +13,6 @@ import Navigation from "./Components/Navigation";
 import ConfirmAccount from "./Pages/ConfirmAccount";
 import Confirmation from "./Pages/Confirmation";
 import { useBootstrapPrefix } from "react-bootstrap/esm/ThemeProvider";
-import { ToastContainer } from "react-toastify";
 
 function App() {
   const [userData, setUserData] = useState({
@@ -63,7 +62,6 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <ToastContainer />
         <Navigation userData={userData} logout={logout} />
         <Container>
           <UserContext.Provider value={{ userData, setUserData }}>
