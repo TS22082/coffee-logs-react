@@ -6,7 +6,7 @@ import UserContext from "../Context/UserContext";
 import { toast } from "react-toastify";
 
 const Login = () => {
-  const [login, setLogin] = useState({});
+  const [login, setLogin] = useState({ email: "", password: "" });
   const { setUserData } = useContext(UserContext);
   const history = useHistory();
 
@@ -39,6 +39,22 @@ const Login = () => {
     }
   };
 
+  const validEmail = (str) => {
+    if (str.includes("@") && str.includes(".com")) {
+      return true;
+    }
+
+    return false;
+  };
+
+  const validPassword = (str) => {
+    if (str.length >= 8) {
+      return true;
+    }
+
+    return false;
+  };
+
   return (
     <Form onSubmit={submit}>
       <Form.Group>
@@ -46,9 +62,18 @@ const Login = () => {
         <Form.Control
           name="email"
           onChange={onChange}
+          className={
+            !validEmail(login.email) ? "border-danger" : "border-success"
+          }
           type="email"
           placeholder="Enter email"
         />
+
+        {!validEmail(login.email) ? (
+          <small id="emailHelp" class="form-text text-muted">
+            Needs to be a valid email.
+          </small>
+        ) : null}
       </Form.Group>
 
       <Form.Group>
@@ -57,13 +82,25 @@ const Login = () => {
           name="password"
           onChange={onChange}
           type="password"
+          className={
+            !validPassword(login.password) ? "border-danger" : "border-success"
+          }
           placeholder="Password"
         />
+        {!validPassword(login.password) ? (
+          <small id="emailHelp" class="form-text text-muted">
+            Needs to be greater than 7 characters long.
+          </small>
+        ) : null}
       </Form.Group>
       <div className="text-right">
         <Button
           variant="primary shadow-sm"
-          disabled={login.email && login.password ? false : true}
+          disabled={
+            validEmail(login.email) && validPassword(login.password)
+              ? false
+              : true
+          }
           type="submit"
         >
           Submit
