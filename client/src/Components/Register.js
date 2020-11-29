@@ -9,7 +9,6 @@ const Register = () => {
     email: "",
     password: "",
     passwordCheck: "",
-    password: "",
     displayName: "",
   });
   const history = useHistory();
@@ -112,9 +111,9 @@ const Register = () => {
           placeholder="Password"
         />
         {!validPassword(register.password) ? (
-          <small class="form-text text-muted">
+          <Form.Text class="text-muted">
             Needs to be greater than 7 characters long.
-          </small>
+          </Form.Text>
         ) : (
           <small class="form-text text-muted">Checks out!</small>
         )}
@@ -130,9 +129,9 @@ const Register = () => {
           placeholder="Password"
         />
         {!validateCheck() ? (
-          <small class="form-text text-muted">Passwords must match.</small>
+          <Form.Text class="text-muted">Passwords must match.</Form.Text>
         ) : (
-          <small class="form-text text-muted">Checks out!</small>
+          <Form.Text class="text-muted">Checks out!</Form.Text>
         )}
       </Form.Group>
       <div className="text-right">

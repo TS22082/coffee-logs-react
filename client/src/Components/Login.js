@@ -71,7 +71,9 @@ const Login = () => {
 
         {!validEmail(login.email) ? (
           <small class="form-text text-muted">Needs to be a valid email.</small>
-        ) : null}
+        ) : (
+          <small class="form-text text-muted">Checks out!</small>
+        )}
       </Form.Group>
 
       <Form.Group>
