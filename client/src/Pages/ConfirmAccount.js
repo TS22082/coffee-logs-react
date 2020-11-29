@@ -12,7 +12,9 @@ const ConfirmAccount = (props) => {
         await axios.post("/confirm", {
           token: props.match.params.token,
         });
-        toast("The account has been confirmed! \n Log in to use your account");
+        toast.success(
+          "The account has been confirmed! Log in to use keep track of your logs."
+        );
         history.push("/");
       } catch (err) {
         console.log(err);
