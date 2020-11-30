@@ -152,6 +152,7 @@ router.get("/", auth, async (req, res) => {
     res.json({ confirmed: user.confirmed });
   } else {
     res.json({
+      email: user.email,
       displayName: user.displayName,
       id: user._id,
       confirmed: user.confirmed,

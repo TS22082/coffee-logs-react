@@ -69,7 +69,9 @@ function App() {
             <Switch>
               <Route path="/home" component={Home} />
               <Route path="/item/:id" component={Item} />
-              <Route path="/settings" component={Settings} />
+              <Route path="/settings">
+                <Settings userData={userData} logout={logout} />
+              </Route>
               <Route path="/confirmation" component={Confirmation} />
               <Route
                 path="/confirm_account/:token"
