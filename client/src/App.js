@@ -14,7 +14,7 @@ import ConfirmAccount from "./Pages/ConfirmAccount";
 import Confirmation from "./Pages/Confirmation";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Profile from "./Pages/Profile";
+import Settings from "./Pages/Settings";
 
 function App() {
   const [userData, setUserData] = useState({
@@ -69,7 +69,7 @@ function App() {
             <Switch>
               <Route path="/home" component={Home} />
               <Route path="/item/:id" component={Item} />
-              <Route path="/profile" component={Profile} />
+              <Route path="/settings" component={Settings} />
               <Route path="/confirmation" component={Confirmation} />
               <Route
                 path="/confirm_account/:token"

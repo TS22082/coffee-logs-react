@@ -31,7 +31,7 @@ const Navigation = (props) => {
                 <Nav.Link
                   onClick={() => {
                     setHome(!home);
-                    history.push("/profile");
+                    history.push("/settings");
                   }}
                 >
                   <MdSettings style={iconStyle} />
