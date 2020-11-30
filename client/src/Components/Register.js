@@ -31,7 +31,6 @@ const Register = () => {
     if (str.includes("@") && str.includes(".com")) {
       return true;
     }
-
     return false;
   };
 
