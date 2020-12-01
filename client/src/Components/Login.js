@@ -70,9 +70,11 @@ const Login = () => {
         />
 
         {!validEmail(login.email) ? (
-          <small class="form-text text-muted">Needs to be a valid email.</small>
+          <Form.Text className="text-muted">
+            Needs to be a valid email.
+          </Form.Text>
         ) : (
-          <small class="form-text text-muted">Checks out!</small>
+          <Form.Text className="text-muted">Checks out!</Form.Text>
         )}
       </Form.Group>
 
@@ -88,11 +90,11 @@ const Login = () => {
           placeholder="Password"
         />
         {!validPassword(login.password) ? (
-          <small class="form-text text-muted">
+          <Form.Text className="text-muted">
             Needs to be greater than 7 characters long.
-          </small>
+          </Form.Text>
         ) : (
-          <small class="form-text text-muted">Checks out!</small>
+          <small className="form-text text-muted">Checks out!</small>
         )}
       </Form.Group>
       <div className="text-right">

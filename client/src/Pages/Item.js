@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import gfm from "remark-gfm";
 import { Form, Button, Row, Col, Card, Dropdown } from "react-bootstrap";
 
 const Item = (props) => {
@@ -98,7 +99,7 @@ const Item = (props) => {
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
-              <ReactMarkdown>{log.text}</ReactMarkdown>
+              <ReactMarkdown plugins={[gfm]}>{log.text}</ReactMarkdown>
             </Card.Body>
           </Card>
         ) : (

@@ -112,6 +112,7 @@ router.post("/login", async (req, res) => {
         id: user._id,
         confirmed: user.confirmed,
         displayName: user.displayName,
+        email: user.email,
       },
     });
   } catch (err) {

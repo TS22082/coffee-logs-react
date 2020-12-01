@@ -42,11 +42,15 @@ const Home = () => {
     overflow: "hidden",
   };
 
+  const addToLogs = (log) => {
+    setLogs([...logs, log]);
+  };
+
   const truncate = (str) => str.split("").splice(0, 40).join("") + " ...";
 
   return (
     <div>
-      <GroupAdd />
+      <GroupAdd addToLogs={addToLogs} />
       <Row>
         {logs.length
           ? logs.map((log, index) => (

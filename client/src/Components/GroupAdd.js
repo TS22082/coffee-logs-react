@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
 import axios from "axios";
 
-const GroupAdd = () => {
+const GroupAdd = (props) => {
   const [show, setShow] = useState(false);
   const [log, setLog] = useState("");
 
@@ -21,7 +21,8 @@ const GroupAdd = () => {
       const logRes = await axios.post("/logs", log, {
         headers: { "x-auth-token": localStorage.getItem("auth-token") },
       });
-      console.log(logRes);
+
+      props.addToLogs(logRes.data);
     } catch (err) {
       console.log(err);
     }
@@ -29,7 +30,7 @@ const GroupAdd = () => {
 
   return (
     <div style={styles}>
-      <Button variant="primary" className="shadow-sm" onClick={toggleModal}>
+      <Button variant="primary shadow-sm" onClick={toggleModal}>
         Add Log
       </Button>
 
