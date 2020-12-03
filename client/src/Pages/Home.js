@@ -28,7 +28,7 @@ const Home = () => {
           headers: { "x-auth-token": localStorage.getItem("auth-token") },
         });
 
-        setLogs(data);
+        // setLogs(data);
       } catch (err) {
         axios.isCancel(err)
           ? console.log("Request cancelled")
