@@ -58,7 +58,7 @@ router.post("/register", async (req, res) => {
       to: newUser.email,
       subject: "Confirm your account",
       text:
-        "Thanks for signing up! Confirm your account here: \n http://localhost:3000/confirm_account/" +
+        "Thanks for signing up! Confirm your account here: \n https://coffee-logs.herokuapp.com/confirm_account/" +
         confirmToken.token,
     };
 
