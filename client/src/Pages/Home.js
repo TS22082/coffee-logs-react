@@ -21,19 +21,20 @@ const Home = () => {
   let source = cancelToken.source();
 
   useEffect(() => {
-    axios
-      .get("/logs", {
-        cancelToken: source.token,
-        headers: { "x-auth-token": localStorage.getItem("auth-token") },
-      })
-      .then((res) => {
-        setLogs(res.data);
-      })
-      .catch((err) => {
+    (async () => {
+      try {
+        const { data } = await axios.get("/logs", {
+          cancelToken: source.token,
+          headers: { "x-auth-token": localStorage.getItem("auth-token") },
+        });
+
+        setLogs(data);
+      } catch (err) {
         axios.isCancel(err)
           ? console.log("Request cancelled")
           : console.log(err);
-      });
+      }
+    })();
 
     return () => source.cancel();
   }, [source]);
