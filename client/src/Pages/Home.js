@@ -21,19 +21,20 @@ const Home = () => {
   let source = cancelToken.source();
 
   useEffect(() => {
-    (async () => {
-      try {
-        const { data } = await axios.get("/logs", {
-          cancelToken: source.token,
-          headers: { "x-auth-token": localStorage.getItem("auth-token") },
-        });
-        setLogs(data);
-      } catch (err) {
+    axios
+      .get("/logs", {
+        cancelToken: source.token,
+        headers: { "x-auth-token": localStorage.getItem("auth-token") },
+      })
+      .then((res) => {
+        setLogs(res.data);
+      })
+      .catch((err) => {
         axios.isCancel(err)
           ? console.log("Request cancelled")
           : console.log(err);
-      }
-    })();
+      });
+
     return () => source.cancel();
   }, [source]);
 
@@ -50,8 +51,8 @@ const Home = () => {
 
   return (
     <div>
-      <h1>You are in!</h1>
-      {/* <GroupAdd addToLogs={addToLogs} />
+      {/* FIX: The .map breaks the app on deploy but works in dev */}
+      <GroupAdd addToLogs={addToLogs} />
       <Row>
         {logs.length
           ? logs.map((log, index) => (
@@ -83,7 +84,7 @@ const Home = () => {
               </Col>
             ))
           : null}
-      </Row> */}
+      </Row>
     </div>
   );
 };

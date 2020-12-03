@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Card, Button } from "react-bootstrap";
+import { Row, Col, Card } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./Settings.css";
@@ -7,7 +7,7 @@ import "./Settings.css";
 const Profile = (props) => {
   const history = useHistory();
 
-  const [user, setUser] = useState({
+  const { setUser } = useState({
     confirmed: null,
     displayName: null,
     email: null,
@@ -25,7 +25,7 @@ const Profile = (props) => {
         console.log(err.data);
       }
     })();
-  }, []);
+  }, [setUser]);
 
   const deleteUser = async () => {
     try {
