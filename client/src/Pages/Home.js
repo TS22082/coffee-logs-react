@@ -23,12 +23,12 @@ const Home = () => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get("/logs", {
+        const res = await axios.get("/logs/userlogs", {
           cancelToken: source.token,
           headers: { "x-auth-token": localStorage.getItem("auth-token") },
         });
         console.log(res);
-        setLogs([...res.data]);
+        setLogs(res.data);
       } catch (err) {
         axios.isCancel(err)
           ? console.log("Request cancelled")
