@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { Navbar, Nav } from "react-bootstrap";
 import { MdExitToApp, MdHome, MdSettings } from "react-icons/md";
-import { ImProfile, ImHome } from "react-icons/im";
 
 const Navigation = (props) => {
   const history = useHistory();
