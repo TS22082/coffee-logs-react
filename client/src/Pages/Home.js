@@ -50,7 +50,8 @@ const Home = () => {
 
   return (
     <div>
-      <GroupAdd addToLogs={addToLogs} />
+      <h1>You are in!</h1>
+      {/* <GroupAdd addToLogs={addToLogs} />
       <Row>
         {logs.length
           ? logs.map((log, index) => (
@@ -82,7 +83,7 @@ const Home = () => {
               </Col>
             ))
           : null}
-      </Row>
+      </Row> */}
     </div>
   );
 };
