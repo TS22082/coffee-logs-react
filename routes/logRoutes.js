@@ -11,7 +11,7 @@ router.post("/", auth, async (req, res) => {
   }
 });
 
-router.get("/userlogs", auth, async (req, res) => {
+router.get("/", auth, async (req, res) => {
   try {
     res.json(await Log.find({ authorId: req.user }));
   } catch (err) {

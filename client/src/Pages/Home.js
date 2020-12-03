@@ -23,7 +23,7 @@ const Home = () => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get("/logs/userlogs", {
+        const res = await axios.get("/logs", {
           cancelToken: source.token,
           headers: { "x-auth-token": localStorage.getItem("auth-token") },
         });
