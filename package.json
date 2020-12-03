@@ -6,9 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "npm start --prefix client",
-    "reset": "node utils/dbReset.js",
     "dev": "concurrently \"nodemon server.js\" \"npm run client\"",
-    "start": "node server.js"
+    "start": "node server.js",
+    "reset": "node utils/dbReset.js",
+    "build": "cd client/ && npm install && npm run build"
   },
   "repository": {
     "type": "git",
