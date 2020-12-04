@@ -37,7 +37,7 @@ const Home = () => {
     })();
 
     return () => source.cancel();
-  }, [source]);
+  }, []);
 
   const cardStyles = {
     height: "250px",

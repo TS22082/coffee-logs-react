@@ -67,6 +67,7 @@ function App() {
         <Container>
           <UserContext.Provider value={{ userData, setUserData }}>
             <Switch>
+              <Route exact path="/" component={Landing} />
               <Route path="/home" component={Home} />
               <Route path="/item/:id" component={Item} />
               <Route path="/settings">
@@ -77,7 +78,6 @@ function App() {
                 path="/confirm_account/:token"
                 component={ConfirmAccount}
               />
-              <Route path="/" component={Landing} />
             </Switch>
           </UserContext.Provider>
         </Container>
