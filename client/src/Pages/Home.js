@@ -23,7 +23,7 @@ const Home = () => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get("/logs", {
+        const res = await axios.put("/logs", null, {
           cancelToken: source.token,
           headers: { "x-auth-token": localStorage.getItem("auth-token") },
         });
@@ -33,6 +33,7 @@ const Home = () => {
         axios.isCancel(err)
           ? console.log("Request cancelled")
           : console.log(err);
+        console.log(err);
       }
     })();
 
