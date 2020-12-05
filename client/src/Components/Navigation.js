@@ -16,11 +16,10 @@ const Navigation = (props) => {
 
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
-      <Navbar.Brand>
-        <Link className="navbar-brand" to="/" onClick={() => setHome(!home)}>
-          <h2>Coffee Logs</h2>
-        </Link>
-      </Navbar.Brand>
+      <Link className="navbar-brand" to="/" onClick={() => setHome(!home)}>
+        <h4>Coffee Logs</h4>
+      </Link>
+
       {props.userData.user ? (
         <>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
