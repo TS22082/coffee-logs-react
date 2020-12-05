@@ -146,7 +146,7 @@ router.post("/tokenIsValid", async (req, res) => {
   }
 });
 
-router.get("/", auth, async (req, res) => {
+router.put("/", auth, async (req, res) => {
   const user = await User.findById(req.user);
 
   if (!user.confirmed) {
