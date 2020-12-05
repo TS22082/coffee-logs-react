@@ -45,8 +45,9 @@ const Item = (props) => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios.get(
+        const { data } = await axios.put(
           `/logs/find/${props.match.params.id}`,
+          null,
           {
             headers: { "x-auth-token": localStorage.getItem("auth-token") },
           }

@@ -19,7 +19,7 @@ router.put("/", auth, async (req, res) => {
   }
 });
 
-router.get("/find/:id", auth, async (req, res) => {
+router.put("/find/:id", auth, async (req, res) => {
   try {
     res.json(await Log.find({ _id: req.params.id }));
   } catch (err) {
