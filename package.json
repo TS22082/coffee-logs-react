@@ -9,7 +9,9 @@
     "dev": "concurrently \"nodemon server.js\" \"npm run client\"",
     "start": "node server.js",
     "reset": "node utils/dbReset.js",
-    "build": "cd client/ && npm install && npm run build"
+    "install": "cd client && npm install",
+    "build": "cd client/ && npm install && npm run build",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",

@@ -51,7 +51,6 @@ const Home = () => {
 
   return (
     <div>
-      {/* FIX: The .map breaks the app on deploy but works in dev */}
       <GroupAdd addToLogs={addToLogs} />
       <Row>
         {logs.length
