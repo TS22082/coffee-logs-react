@@ -11,6 +11,10 @@ router.post("/", auth, async (req, res) => {
   }
 });
 
+router.get("/test", auth, async (req, res) => {
+  res.json("success");
+});
+
 router.put("/", auth, async (req, res) => {
   try {
     res.json(await Log.find({ authorId: req.user }));
