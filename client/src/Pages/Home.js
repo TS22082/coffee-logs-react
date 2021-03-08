@@ -38,16 +38,6 @@ const Home = () => {
     return () => source.cancel();
   }, []);
 
-  useEffect(() => {
-    (async () => {
-      const res = await axios.get("/logs/test", {
-        headers: { "x-auth-token": localStorage.getItem("auth-token") },
-      });
-
-      console.log(res);
-    })();
-  }, []);
-
   const cardStyles = {
     height: "250px",
     overflow: "hidden",

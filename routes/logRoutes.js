@@ -1,52 +1,22 @@
 const router = require("express").Router();
+const {
+  newLog,
+  getUserLogs,
+  findLog,
+  deleteLog,
+  editLog,
+} = require("../controllers/logController");
 const auth = require("../middleware/auth");
 const Log = require("../models/logModel");
 
-router.post("/", auth, async (req, res) => {
-  try {
-    const newLog = new Log({ text: req.body.text, authorId: req.user });
-    res.json(await newLog.save());
-  } catch (err) {
-    res.send(err);
-  }
-});
+router.post("/", auth, newLog);
 
-router.get("/test", auth, async (req, res) => {
-  res.json("success");
-});
+router.put("/", auth, getUserLogs);
 
-router.put("/", auth, async (req, res) => {
-  try {
-    res.json(await Log.find({ authorId: req.user }));
-  } catch (err) {
-    res.send(err);
-  }
-});
+router.put("/find/:id", auth, findLog);
 
-router.put("/find/:id", auth, async (req, res) => {
-  try {
-    res.json(await Log.find({ _id: req.params.id }));
-  } catch (err) {
-    res.send(err);
-  }
-});
+router.delete("/:logid", auth, deleteLog);
 
-router.delete("/:logid", auth, async (req, res) => {
-  try {
-    res.json(await Log.findByIdAndDelete(req.params.logid));
-  } catch (err) {
-    res.send(err);
-  }
-});
-
-router.patch("/edit", auth, async (req, res) => {
-  try {
-    res.json(
-      await Log.findByIdAndUpdate(req.body._id, { text: req.body.text })
-    );
-  } catch (err) {
-    res.send(err);
-  }
-});
+router.patch("/edit", auth, editLog);
 
 module.exports = router;
