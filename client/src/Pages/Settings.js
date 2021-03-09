@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Row, Col, Card } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
@@ -6,26 +6,6 @@ import "./Settings.css";
 
 const Profile = (props) => {
   const history = useHistory();
-
-  const { setUser } = useState({
-    confirmed: null,
-    displayName: null,
-    email: null,
-    id: null,
-  });
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const userData = await axios.get("/users", {
-          headers: { "x-auth-token": localStorage.getItem("auth-token") },
-        });
-        setUser(userData.data);
-      } catch (err) {
-        console.log(err.data);
-      }
-    })();
-  }, [setUser]);
 
   const deleteUser = async () => {
     try {
@@ -44,8 +24,8 @@ const Profile = (props) => {
       <Col md={{ span: 8, offset: 2 }}>
         <Card className="shadow mt-4">
           <Card.Body>
-            <p>Display name: {props.userData.user.displayName}</p>
-            <p>Email: {props.userData.user.email}</p>
+            <p>Display name: {props.userData.user?.displayName}</p>
+            <p>Email: {props.userData.user?.email}</p>
             <hr />
             <p
               className="del text-danger"
