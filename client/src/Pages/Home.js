@@ -47,7 +47,8 @@ const Home = () => {
     setLogs([...logs, log]);
   };
 
-  const truncate = (str) => str.split("").splice(0, 40).join("") + " ...";
+  const truncate = (str) =>
+    str.length > 300 ? str.split("").splice(0, 40).join("") + " ..." : str;
 
   return (
     <div>
