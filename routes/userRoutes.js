@@ -15,15 +15,23 @@ const {
 } = require("../controllers/userController");
 
 // register an account
+// ROUTE: /user/register
 router.post("/register", createUser);
 
 // login user
+// ROUTE: /user/login
 router.post("/login", loginUser);
 
+// delete a user
+// ROUTE: /user/delete
 router.delete("/delete", auth, deleteUser);
 
-router.post("/tokenIsValid", checkToken);
+// return user if token is valid
+// ROUTE: /user/tokenIsValid
+router.get("/tokenIsValid", checkToken);
 
-router.put("/", auth, getUser);
+// get a single user based on auth
+// ROUTE: /user/
+router.get("/", auth, getUser);
 
 module.exports = router;
