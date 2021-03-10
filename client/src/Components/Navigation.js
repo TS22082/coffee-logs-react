@@ -12,11 +12,6 @@ const Navigation = (props) => {
     width: "30px",
   };
 
-  const style = {
-    redText: { color: "red" },
-    greenText: { color: "green" },
-  };
-
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Link className="navbar-brand" to="/home">
