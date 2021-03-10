@@ -37,7 +37,6 @@ const Navigation = (props) => {
               >
                 <MdSettings style={iconStyle} />
               </Nav.Link>
-              )
               <Nav.Link
                 onClick={() => {
                   props.logout();
