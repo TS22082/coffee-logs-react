@@ -48,7 +48,7 @@ const Home = () => {
   };
 
   const truncate = (str) =>
-    str.length > 300 ? str.split("").splice(0, 40).join("") + " ..." : str;
+    str.length > 100 ? str.split("").splice(0, 60).join("") + " ..." : str;
 
   return (
     <div>
