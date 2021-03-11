@@ -89,13 +89,6 @@ const Item = (props) => {
                     >
                       Delete
                     </Dropdown.Item>
-                    <Dropdown.Item
-                      onClick={() => {
-                        history.push("/home");
-                      }}
-                    >
-                      Home
-                    </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
