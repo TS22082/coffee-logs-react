@@ -45,14 +45,13 @@ const Item = (props) => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios.put(
+        const { data } = await axios.get(
           `/logs/find/${props.match.params.id}`,
-          null,
           {
             headers: { "x-auth-token": localStorage.getItem("auth-token") },
           }
         );
-        setLog(data[0]);
+        setLog(data);
       } catch (err) {
         console.log(err);
       }

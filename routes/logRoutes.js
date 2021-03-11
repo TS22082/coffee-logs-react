@@ -11,9 +11,9 @@ const Log = require("../models/logModel");
 
 router.post("/", auth, newLog);
 
-router.put("/", auth, getUserLogs);
+router.get("/", auth, getUserLogs);
 
-router.put("/find/:id", auth, findLog);
+router.get("/find/:id", auth, findLog);
 
 router.delete("/:logid", auth, deleteLog);
 

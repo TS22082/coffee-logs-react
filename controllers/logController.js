@@ -20,7 +20,7 @@ module.exports = {
 
   findLog: async (req, res) => {
     try {
-      res.json(await Log.find({ _id: req.params.id }));
+      res.json(await Log.findOne({ _id: req.params.id }));
     } catch (err) {
       res.send(err);
     }

@@ -23,7 +23,7 @@ const Home = () => {
 
     (async () => {
       try {
-        const res = await axios.put("/logs", null, {
+        const res = await axios.get("/logs", {
           cancelToken: source.token,
           headers: { "x-auth-token": localStorage.getItem("auth-token") },
         });
